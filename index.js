@@ -57,6 +57,9 @@
     clickTime = Date.now();
     generateItem();
     randomizeButtons();
+    id("help").classList.toggle("invisible");
+    id("instructions").classList.toggle("invisible");
+    id("start").disabled = true;
   }
 
   function generateItem() {
@@ -84,6 +87,7 @@
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].textContent = COLOR_WORDS[response_lang][rndOrder[i]];
         buttons[i].id = rndOrder[i];
+        buttons[i].disabled = false;
     }
   }
 
@@ -125,8 +129,15 @@
     id("timer").textContent = minutesDisplay + ":" + secondsDisplay;
   }
 
-  function updateResults(){
+  function updateResults() {
     qs("#board p").remove();
+    let buttons = qsa(".response_btn");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+    }
+    id("help").classList.toggle("invisible");
+    id("instructions").classList.toggle("invisible");
+    id("start").disabled = false;
   }
 
   /**

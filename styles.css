@@ -76,6 +76,24 @@ main h2 {
     position: absolute;
     font-size: 48pt;
 }
+
+p#instructions {
+    top: 100px;
+    color: white;
+    width: 780px;
+    text-align: center;
+}
+
+p#help {
+    color: white;
+    top: 300px;
+    font-size: 24pt;    
+}
+
+.invisible {
+    display: none;
+}
+
 .scoring_element {
     display: flex;
     flex-direction: column;
