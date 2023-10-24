@@ -1,0 +1,49 @@
+body {
+    font-family: 'Source Sans 3', sans-serif;
+
+}
+
+.h_lang {
+    font-weight: 300;
+}
+
+#main {
+    background-color: cornflowerblue;
+    border: 3pt solid black;
+    border-radius: 0.2em;
+    width: 900px;
+    text-align: center;
+    padding: 5px;
+}
+
+#main select {
+    background-color: cornflowerblue;
+    font-size: 24px;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+main h2 {
+    display: inline;
+    font-weight: 200;
+}
+
+#board {
+    border: 1pt solid black;
+    height: 600px;
+    margin: 5px;
+}
+
+#main footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main footer button {
+    justify-self: flex-start;
+}
+
+#timer {
+    display: inline;
+    justify-self: flex-end;
+}

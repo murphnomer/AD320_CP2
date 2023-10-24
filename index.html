@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+  Name: Mike Murphy
+  Date: 2023-10-23
+
+  This is the index.html page for my CP2 website which is a game that also analyzes
+  your linguistic fluency in various languages based on the Stroop method.
+-->
+<head>
+    <title>Stroop Me!!</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Source+Sans+3:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Stroop Test</h1>
+    </header>
+    <main>
+        <section id="main">
+            <select id="item_lang">
+                <option value="english">English</option>
+            </select>
+            <h2 class="h_label"> vs. </h2>
+            <select>
+                <option value="response_lang">English</option>
+            </select>
+            <div id="board">
+                <canvas>
+
+                </canvas>
+            </div>
+            <footer>
+                <button id="start">Start</button>
+                <h3 id="timer">0:00</h3>
+            </footer>
+        </section>
+    </main>
+</body>
