@@ -7,6 +7,29 @@ body {
     font-weight: 300;
 }
 
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+#responses {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 10px;
+    margin-bottom: 85px;
+    margin-top: 30px;
+}
+
+.response_btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 24px;
+    background-color: cornflowerblue;
+    border: 3pt solid black;
+    width: 180px;
+    text-align: justify;
+}
+
 #main {
     background-color: cornflowerblue;
     border: 3pt solid black;
@@ -35,7 +58,8 @@ main h2 {
 
 #main footer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -51,6 +75,16 @@ main h2 {
 #board p {
     position: absolute;
     font-size: 48pt;
+}
+.scoring_element {
+    display: flex;
+    flex-direction: column;
+}
+
+.scoring_element p {
+    margin-top: 0;
+    margin-bottom: 0;
+
 }
 
 .blue {

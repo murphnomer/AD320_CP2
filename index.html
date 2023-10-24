@@ -20,29 +20,43 @@
         <h1>Stroop Test</h1>
     </header>
     <main>
-        <section id="main">
-            <select id="source_lang">
-                <option value="1" selected>English</option>
-                <option value="0">None</option>
-                <option value="2">Español</option>
-                <option value="3">Deutsch</option>
-                <option value="4">Русский</option>
-                <option value="5">中文</option>
-            </select>
-            <h2 class="h_label"> vs. </h2>
-            <select id="response_lang">
-                <option value="1" selected>English</option>
-                <option value="2">Español</option>
-                <option value="3">Deutsch</option>
-                <option value="4">Русский</option>
-                <option value="5">中文</option>
-            </select>
-            <div id="board">
-            </div>
-            <footer>
-                <button id="start">Start</button>
-                <h3 id="timer">0:00</h3>
-            </footer>
-        </section>
+        <article>
+            <section id="main">
+                <select id="source_lang">
+                    <option value="1" selected>English</option>
+                    <option value="0">None</option>
+                    <option value="2">Español</option>
+                    <option value="3">Deutsch</option>
+                    <option value="4">Русский</option>
+                    <option value="5">中文</option>
+                </select>
+                <h2 class="h_label"> vs. </h2>
+                <select id="response_lang">
+                    <option value="1" selected>English</option>
+                    <option value="2">Español</option>
+                    <option value="3">Deutsch</option>
+                    <option value="4">Русский</option>
+                    <option value="5">中文</option>
+                </select>
+                <div id="board">
+                </div>
+                <footer>
+                    <button id="start">Start</button>
+                    <div class="scoring_element"><p>Time: <p><p id="timer">0:00</p></div>
+                    <div class="scoring_element"><p># Correct: <p><p id="num_correct">0</p></div>
+                    <div class="scoring_element"><p># Wrong: <p><p id="num_wrong">0</p></div>
+                    <div class="scoring_element"><p>Avg Response Time: <p><p id="response_time">0</p></div>
+                </footer>
+            </section>
+        </article>
+        <aside id="responses">
+            <button class="response_btn">color1</button>
+            <button class="response_btn">color2</button>
+            <button class="response_btn">color3</button>
+            <button class="response_btn">color4</button>
+            <button class="response_btn">color5</button>
+            <button class="response_btn">color6</button>
+            <button class="response_btn">color7</button>
+        </aside>
     </main>
 </body>

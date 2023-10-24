@@ -44,14 +44,19 @@
   function init() {
 
     id("start").addEventListener("click",start);
+    let buttons = qsa(".response_btn");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click",processResponse);
+    }
   }
 
   function start() {
-    timer = setInterval(updateTimeDisplay, ONE_SECOND);
+    timer = setInterval(tick, ONE_SECOND);
     source_lang = id("source_lang").value;
     response_lang = id("response_lang").value;
     clickTime = Date.now();
     generateItem();
+    randomizeButtons();
   }
 
   function generateItem() {
@@ -63,16 +68,53 @@
     }
     item.textContent = COLOR_WORDS[source_lang][word];
     item.classList.add(COLOR_NAMES[color]);
+    item.id = color;
 
-    item.style.top = Math.floor(Math.random() * id("board").style.height);
-    item.style.left = Math.floor(Math.random() * id("board").style.width);
+    const BOARD_STYLE = window.getComputedStyle(id("board"));
+
+    item.style.top = (60 + Math.floor(Math.random() * (BOARD_STYLE.height.replace('px','') - 55))) + 'px';
+    item.style.left = (15 + Math.floor(Math.random() * (BOARD_STYLE.width.replace('px','') - 270))) + 'px';
     id("board").appendChild(item);
     
   }
 
-  function nextResponse() {
-    totalResponseTime += Date.now() - clickTime;
+  function randomizeButtons() {
+    let buttons = qsa(".response_btn");
+    let rndOrder = shuffle([...Array(buttons.length).keys()]);
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].textContent = COLOR_WORDS[response_lang][rndOrder[i]];
+        buttons[i].id = rndOrder[i];
+    }
+  }
 
+  function processResponse() {
+    totalResponseTime += Date.now() - clickTime;
+    let item = qs("#board p");
+    if (this.id == item.id) {
+        numCorrect++;
+    } else {
+        numWrong++;
+    }
+    item.remove();
+    generateItem();
+    clickTime = Date.now();
+    updateScoreDisplay();
+
+  }
+
+  function tick() {
+    updateTimeDisplay();
+    if (remainingTime===0) {
+        clearInterval(timer);
+        timer = null;
+        updateResults();
+    }
+  }
+
+  function updateScoreDisplay() {
+    id("num_correct").textContent = numCorrect;
+    id("num_wrong").textContent = numWrong;
+    id("response_time").textContent = Math.floor(totalResponseTime / (numCorrect + numWrong)) + ' ms';
   }
 
   function updateTimeDisplay() {
@@ -83,10 +125,32 @@
     id("timer").textContent = minutesDisplay + ":" + secondsDisplay;
   }
 
-  function clickItem() {
-
+  function updateResults(){
+    qs("#board p").remove();
   }
 
+  /**
+   * Randomizes the order of elements in an array.  From StackOverflow:
+   * https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+   * @param {*} array the array to randomize
+   * @returns the randomized array
+   */
+  function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex > 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
 
   /** ------------------------------ Helper Functions  ------------------------------ */
 
