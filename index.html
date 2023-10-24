@@ -21,17 +21,23 @@
     </header>
     <main>
         <section id="main">
-            <select id="item_lang">
-                <option value="english">English</option>
+            <select id="source_lang">
+                <option value="1" selected>English</option>
+                <option value="0">None</option>
+                <option value="2">Español</option>
+                <option value="3">Deutsch</option>
+                <option value="4">Русский</option>
+                <option value="5">中文</option>
             </select>
             <h2 class="h_label"> vs. </h2>
-            <select>
-                <option value="response_lang">English</option>
+            <select id="response_lang">
+                <option value="1" selected>English</option>
+                <option value="2">Español</option>
+                <option value="3">Deutsch</option>
+                <option value="4">Русский</option>
+                <option value="5">中文</option>
             </select>
             <div id="board">
-                <canvas>
-
-                </canvas>
             </div>
             <footer>
                 <button id="start">Start</button>

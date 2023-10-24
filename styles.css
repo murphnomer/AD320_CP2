@@ -47,3 +47,36 @@ main h2 {
     display: inline;
     justify-self: flex-end;
 }
+
+#board p {
+    position: absolute;
+    font-size: 48pt;
+}
+
+.blue {
+    color: blue;
+}
+
+.red {
+    color: red;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.black {
+    color: black;
+}
+
+.purple {
+    color: purple;
+}
+
+.green {
+    color: green;
+}
+
+.orange {
+    color: orange;
+}
