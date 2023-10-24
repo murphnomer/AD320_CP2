@@ -1,6 +1,12 @@
+/*
+    Name: Mike Murphy
+    Date: 10/24/2023
+    
+    CSS file for Stroop Me game.
+*/
+
 body {
     font-family: 'Source Sans 3', sans-serif;
-
 }
 
 .h_lang {
@@ -103,6 +109,10 @@ p#help {
     margin-top: 0;
     margin-bottom: 0;
 
+}
+
+footer {
+    margin-top: 10px;
 }
 
 .blue {
