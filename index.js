@@ -47,8 +47,15 @@
     let clickTime;
     let remainingTime = TIMER_START;
     let totalResponseTime = 0;
+
+    // Correct means color of the letters was correctly chosen
     let numCorrect = 0;
-    let numWrong = 0;
+
+    // AllWrong means choice didn't match the meaning or the color
+    let numAllWrong = 0;
+
+    // Mismatch means choice matched meaning instead of color
+    let numMismatch = 0;
 
   /**
    * Add a function that will be called when the window is loaded.
@@ -74,6 +81,14 @@
   function start() {
     // Run the tick function every second
     timer = setInterval(tick, ONE_SECOND);
+
+    // Reset all the counters
+    remainingTime = TIMER_START;
+    totalResponseTime = 0;
+    numCorrect = 0;
+    numAllWrong = 0;
+    numMismatch = 0;
+
 
     // Get the language values selected by the user for this run
     source_lang = id("source_lang").value;
@@ -126,7 +141,9 @@
     // Add a class to the new item that tells it which color to 
     // make the font
     item.classList.add(COLOR_NAMES[color]);
-    item.id = color;
+
+    // Store the both the meaning and the color of the word 
+    item.id = word + "_" + color;
 
     // Get the current dimensions of the game board by gathering
     // the computed style
@@ -143,7 +160,9 @@
   }
 
   /**
-   * Randomizes the order of the button labels on the response buttons
+   * Randomizes the order of the button labels on the response buttons so we
+   * know the user hasn't just memorized the locations of the buttons rather
+   * than reading them
    */
   function randomizeButtons() {
     // Get an array of the buttons
@@ -170,19 +189,23 @@
    * since the item was added in ms.
    */
   function processResponse() {
-
     // Add the time since the item was added to the total response time counter
     totalResponseTime += Date.now() - clickTime;
 
     // Gets the current item from the game board
     let item = qs("#board p");
 
+    // Break apart the color and the meaning
+    let itemColors = item.id.split('_');
+
     // Compare the id of the item to the id of the clicked button and update
     // the appropriate score counter.
-    if (this.id == item.id) {
+    if (this.id == itemColors[1]) {
         numCorrect++;
+    } else if (this.id == itemColors[0]) {
+        numMismatch++;
     } else {
-        numWrong++;
+        numAllWrong++;
     }
 
     // Remove the item from the gameboard
@@ -219,15 +242,15 @@
    */
   function updateScoreDisplay() {
     id("num_correct").textContent = numCorrect;
-    id("num_wrong").textContent = numWrong;
-    id("response_time").textContent = Math.floor(totalResponseTime / (numCorrect + numWrong)) + ' ms';
+    id("num_mismatch").textContent = numMismatch;
+    id("num_wrong").textContent = numAllWrong;
+    id("response_time").textContent = Math.floor(totalResponseTime / (numCorrect + numAllWrong + numMismatch)) + ' ms';
   }
 
   /**
    * Updates the timer label below the gameboard
    */
   function updateTimeDisplay() {
-
     // Decrement the time remaining counter
     remainingTime--;
 
