@@ -19,7 +19,7 @@
 </head>
 <body>
     <header>
-        <h1>Stroop Test</h1>
+        <h1>Stroop Test - Linguistic Fluency Analyzer</h1>
     </header>
     <main>
         <article>
@@ -41,13 +41,14 @@
                     <option value="5">中文</option>
                 </select>
                 <div id="board">
-                    <p id="instructions">Choose your languages above, then click Start!</p>
-                    <p id="help" class="invisible">Click the color of the font, not what the word says!</p>
+                    <h3 id="instructions">Choose your languages above, then click Start!</h3>
+                    <h3 id="help" class="invisible">Click the color of the font, not what the word says!</h3>
                 </div>
                 <footer>
                     <button id="start">Start</button>
                     <div class="scoring_element"><p>Time: <p><p id="timer">0:00</p></div>
                     <div class="scoring_element"><p># Correct: <p><p id="num_correct">0</p></div>
+                    <div class="scoring_element"><p># Mismatch: <p><p id="num_mismatch">0</p></div>
                     <div class="scoring_element"><p># Wrong: <p><p id="num_wrong">0</p></div>
                     <div class="scoring_element"><p>Avg Response Time: <p><p id="response_time">0</p></div>
                 </footer>
@@ -64,6 +65,13 @@
         </aside>
     </main>
     <footer>
-        More information on the Stroop effect, on which this project is based: <a href="https://en.wikipedia.org/wiki/Stroop_effect">Stroop Effect</a>
+        <article>
+            <p>More information on the Stroop effect, on which this project is based: <a href="https://en.wikipedia.org/wiki/Stroop_effect">Stroop Effect</a></p>
+            <p>You can use the None language mode on the left to "baseline" your performance with colored boxes instead of words.  Compare your response time and
+                mismatch numbers to this baseline to get a rough idea of how well you understand the text in the gameboard area.  The better you understand the 
+                colored words at a glance, the higher your mismatch and response time numbers should be as the interference effect becomes more pronounced.</p>
+            <p>If you have a very high Wrong number, it's likely that you don't understand the language on the response buttons very well.</p>
+            <p>Play around with it and see if you can gain some more insights!</p>
+        </article>
     </footer>
 </body>

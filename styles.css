@@ -83,14 +83,17 @@ main h2 {
     font-size: 48pt;
 }
 
-p#instructions {
+h3#instructions {
+    position: absolute;
+    font-size: 48pt;
     top: 100px;
     color: white;
     width: 780px;
     text-align: center;
 }
 
-p#help {
+h3#help {
+    position: absolute;
     color: white;
     top: 300px;
     font-size: 24pt;    
@@ -113,6 +116,10 @@ p#help {
 
 footer {
     margin-top: 10px;
+}
+
+footer article p {
+    width: 900px;
 }
 
 .blue {
