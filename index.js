@@ -111,6 +111,9 @@
 
     // Disable the Start button until the timer runs out
     id("start").disabled = true;
+
+    // Reset the scoreboard
+    updateScoreDisplay();
   }
 
   /**
@@ -244,7 +247,7 @@
     id("num_correct").textContent = numCorrect;
     id("num_mismatch").textContent = numMismatch;
     id("num_wrong").textContent = numAllWrong;
-    id("response_time").textContent = Math.floor(totalResponseTime / (numCorrect + numAllWrong + numMismatch)) + ' ms';
+    id("response_time").textContent = (numCorrect + numAllWrong + numMismatch)==0 ? "0 ms" : Math.floor(totalResponseTime / (numCorrect + numAllWrong + numMismatch)) + ' ms';
   }
 
   /**
